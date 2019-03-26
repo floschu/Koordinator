@@ -21,6 +21,11 @@ dependencies {
      * Lifecycle Extensions for Koordinator. See: Koordinator-Android
      */
     implementation 'at.florianschuster.koordinator:android:0.0.1'
+    
+    /**
+     * Lifecycle Extensions for Koordinator. See: Koordinator-Android-Koin
+     */
+    implementation 'at.florianschuster.koordinator:androidkoin:0.0.1'
 }
 ```
 
@@ -66,6 +71,10 @@ router follow MoviesRoute.OnMovieSelected(420)
 ```
 
 ### Koordinator-Android
+
+*TODO*
+
+### Koordinator-Android-Koin
 
 *TODO*
 

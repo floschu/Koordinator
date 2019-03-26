@@ -14,7 +14,7 @@ import io.reactivex.disposables.CompositeDisposable
  */
 abstract class Coordinator<Route, NavigationHandler>(
     router: Router
-) where Route : KoordinatorRoute, NavigationHandler : Any {
+) where Route : CoordinatorRoute, NavigationHandler : Any {
     private val disposables = CompositeDisposable()
     private var handler: NavigationHandler? = null
 
