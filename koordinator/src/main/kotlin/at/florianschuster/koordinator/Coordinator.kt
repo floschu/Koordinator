@@ -31,7 +31,7 @@ abstract class Coordinator<Route, NavigationHandler>(
                     Maybe.empty()
                 }
             }
-            .subscribe({ navigate(it.first, it.second) }, Koordinator::handleError)
+            .subscribe { navigate(it.first, it.second) }
             .let { disposables.add(it) }
     }
 
