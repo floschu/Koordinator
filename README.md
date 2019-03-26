@@ -27,7 +27,6 @@ dependencies {
 ## What should I know before I try this?
 
 * Kotlin
-* RxJava2
 
 ## Tell me more
 
