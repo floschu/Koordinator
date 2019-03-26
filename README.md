@@ -57,7 +57,7 @@ class MoviesCoordinator(
 // singleton
 val router = Router()
 
-// in view
+// in view controller (e.g. Fragment)
 val coordinator = MoviesCoordinator(router)
 coordinator.provideNavigationHandler(findNavController())
 
