@@ -7,8 +7,10 @@ import io.reactivex.subjects.PublishSubject
 /**
  * A [Router] can be injected into a View independent class and used to follow a specific [KoordinatorRoute].
  * A flow specific [Coordinator] then uses the router to determine where to navigate.
+ *
+ * An application should only have one [Router].
  */
-object Router {
+class Router {
     private val routeSubject: PublishSubject<KoordinatorRoute> = PublishSubject.create<KoordinatorRoute>()
 
     /**
