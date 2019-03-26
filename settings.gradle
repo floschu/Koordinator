@@ -1,1 +1,1 @@
-include ':koordinator', ':koorinatorandroid'
+include ':core', ':android'
