@@ -39,6 +39,11 @@ dependencies {
 
 *TODO*
 
+### Examples
+
+* [Watchables](https://github.com/floschu/Watchables): : A Movie and TV Show Watchlist Application. It uses [Koin](https://github.com/InsertKoinIO/koin) as DI Framework and [Reaktor](https://github.com/floschu/Reaktor) as architectural MV* pattern.
+* *TODO*
+
 ## Author
 
 Visit my [Website](https://florianschuster.at/).

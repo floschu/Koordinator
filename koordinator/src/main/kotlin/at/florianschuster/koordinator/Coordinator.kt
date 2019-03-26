@@ -38,7 +38,7 @@ abstract class Coordinator<Route, NavigationHandler>(
     /**
      * Attaches a navigation handler to this [Coordinator] that is used to handle navigation.
      */
-    fun attachNavigationHandler(handler: NavigationHandler) {
+    fun provideNavigationHandler(handler: NavigationHandler) {
         this.handler = handler
     }
 
