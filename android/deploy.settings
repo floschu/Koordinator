@@ -1,0 +1,3 @@
+id = android
+description = Android Extensions for Koordinator, a simple pattern for Android applications to separate specific navigation implementation from view controllers.
+name = Koordinator-Android
