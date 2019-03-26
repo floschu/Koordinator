@@ -35,6 +35,37 @@ dependencies {
 
 *TODO*
 
+``` kotlin
+// per view controller
+sealed class MoviesRoute : KoordinatorRoute {
+    data class OnMovieSelected(val id: Int) : MoviesRoute()
+    object SearchIsRequired : MoviesRoute()
+}
+
+// per view controller
+class MoviesCoordinator(
+    router: Router
+) : Coordinator<MoviesRoute, NavController>(router) {
+    override fun navigate(route: MoviesRoute, handler: NavController) {
+        when (route) {
+            is MoviesRoute.OnMovieSelected -> Directions.actionOverviewToDetail(route.id)
+            is MoviesRoute.SearchIsRequired -> Directions.actionOverviewToSearch()
+        }.also(handler::navigate)
+    }
+}
+
+// singleton
+val router = Router()
+
+// in view
+val coordinator = MoviesCoordinator(router)
+coordinator.provideNavigationHandler(findNavController())
+
+// in view model
+router follow MoviesRoute.OnMovieSelected(420)
+
+```
+
 ### Koordinator-Android
 
 *TODO*
