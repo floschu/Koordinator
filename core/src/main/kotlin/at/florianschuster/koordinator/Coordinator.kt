@@ -2,6 +2,7 @@ package at.florianschuster.koordinator
 
 import android.app.Activity
 import android.view.ViewGroup
+import androidx.annotation.CallSuper
 import io.reactivex.Maybe
 import io.reactivex.disposables.CompositeDisposable
 
@@ -47,7 +48,8 @@ abstract class Coordinator<Route, NavigationHandler>(
      */
     abstract fun navigate(route: Route, handler: NavigationHandler)
 
-    fun onCleared() {
+    @CallSuper
+    open fun onCleared() {
         disposables.clear()
         handler = null
     }
