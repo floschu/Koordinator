@@ -1,6 +1,7 @@
 package at.florianschuster.android.koin
 
 import android.content.ComponentCallbacks
+import androidx.annotation.RestrictTo
 import androidx.lifecycle.LifecycleOwner
 import at.florianschuster.koordinator.Coordinator
 import at.florianschuster.koordinator.android.LifecycleCoordinator
@@ -31,9 +32,22 @@ inline fun <L, reified C> L.coordinator(
     scope: Scope = Scope.GLOBAL,
     noinline parameters: ParametersDefinition? = null
 ): Lazy<C> where L : LifecycleOwner, C : LifecycleCoordinator<*, *> = lazy {
-    when (this) {
-        is KoinComponent -> this.getKoin()
-        is ComponentCallbacks -> (this as ComponentCallbacks).getKoin()
-        else -> GlobalContext.get().koin
-    }.get<C>(qualifier, scope, parameters).also(lifecycle::addObserver)
+    getKoin().get<C>(qualifier, scope, parameters).also(lifecycle::addObserver)
+}
+
+/**
+ * Gets a [Coordinator] instance for a [LifecycleOwner].
+ */
+inline fun <L, reified C> L.getCoordinator(
+    qualifier: Qualifier? = null,
+    scope: Scope = Scope.GLOBAL,
+    noinline parameters: ParametersDefinition? = null
+): C where L : LifecycleOwner, C : LifecycleCoordinator<*, *> =
+    getKoin().get<C>(qualifier, scope, parameters).also(lifecycle::addObserver)
+
+@RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+fun LifecycleOwner.getKoin() = when (this) {
+    is KoinComponent -> this.getKoin()
+    is ComponentCallbacks -> (this as ComponentCallbacks).getKoin()
+    else -> GlobalContext.get().koin
 }
