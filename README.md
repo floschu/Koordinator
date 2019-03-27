@@ -39,6 +39,8 @@ dependencies {
 
 *TODO*
 
+Make sure to call `fun onCleared()` of `Coordinator` after you are done with it. This clears the internal `CompositeDisposable`.
+
 ``` kotlin
 // per view controller
 sealed class MoviesRoute : KoordinatorRoute {
@@ -72,11 +74,13 @@ router follow MoviesRoute.OnMovieSelected(420)
 
 ### Koordinator-Android
 
-*TODO*
+Use the `LifecycleOwner.lifecycleCoordinator(...)` extension function to bind a `LifecycleCoordinator` to a `lifecycle` of a `LifecycleOwner`. This then automatically clears the `CompositeDispoable` in `Coordinator`.
 
 ### Koordinator-Android-Koin
 
-*TODO*
+[Koin](https://github.com/InsertKoinIO/koin) is a lightweight dependency injection framework for Kotlin.
+
+The `androidkoin` module contains simple extension functions to inject a `LifecycleCoordinator`. They are just renamed Koin extension functions that can be used for more clarity when developing with the framework.
 
 ### Examples
 
