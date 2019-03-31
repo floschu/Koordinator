@@ -3,8 +3,6 @@
 
 Koordinator is a simple pattern for Android applications to separate specific navigation implementation from view controllers.
 
-*TODO*
-
 ## Installation
 
 ```groovy
@@ -62,10 +60,15 @@ Each screen should have an object that implements **Route** to define the direct
 
 #### Router
 
-The **Router** can be used in a view independent class to follow a specific [Route]. A flow specific [Coordinator] then uses the [Router] to determine where to navigate.
+The **Router** can be used in a view independent class to follow a specific **Route**. A flow specific **Coordinator** then uses the **Router** to determine where to navigate.
 
 ``` kotlin
-Router follow MoviesRoute.OnMovieSelected(420)
+class MoviesViewModel: ViewModel() {
+    fun doSomething() {
+        ...
+        Router follow MoviesRoute.OnMovieSelected(420)
+    }
+}
 ```
 
 #### Coordinator
