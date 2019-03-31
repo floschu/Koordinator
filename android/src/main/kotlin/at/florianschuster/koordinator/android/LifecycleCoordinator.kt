@@ -4,14 +4,15 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import at.florianschuster.koordinator.Coordinator
-import at.florianschuster.koordinator.CoordinatorRoute
+import at.florianschuster.koordinator.Route
 
 /**
  * A [Coordinator] that implements [LifecycleObserver] and clears its resources when the observed [Lifecycle] calls
  * [Lifecycle.Event.ON_DESTROY].
  */
-abstract class LifecycleCoordinator<Route, NavigationHandler> : Coordinator<Route, NavigationHandler>(),
-    LifecycleObserver where Route : CoordinatorRoute, NavigationHandler : Any {
+abstract class LifecycleCoordinator<LifecycleCoordinatorRoute, NavigationHandler> :
+    Coordinator<LifecycleCoordinatorRoute, NavigationHandler>(), LifecycleObserver
+        where LifecycleCoordinatorRoute : Route, NavigationHandler : Any {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     protected fun onDestroy() {

@@ -3,4 +3,5 @@ apply from: "$rootDir/library-module.gradle"
 dependencies {
     implementation deps.rxjava
     implementation deps.annotations
+    testImplementation deps.junit
 }

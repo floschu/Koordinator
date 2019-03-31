@@ -20,9 +20,10 @@ buildscript {
             lifecycle  : "android.arch.lifecycle:extensions:2.1.0-rc01",
             rxjava     : "io.reactivex.rxjava2:rxjava:2.2.8",
             koin       : [
-                    core     : "org.koin:koin-core:${versions.koin}",
-                    androidx : "org.koin:koin-android:${versions.koin}"
-            ]
+                    core    : "org.koin:koin-core:${versions.koin}",
+                    androidx: "org.koin:koin-android:${versions.koin}"
+            ],
+            junit      : "junit:junit:4.12"
     ]
 
     repositories {

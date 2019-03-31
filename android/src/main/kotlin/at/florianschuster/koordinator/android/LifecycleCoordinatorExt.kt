@@ -8,5 +8,5 @@ import androidx.lifecycle.LifecycleOwner
 fun <C> LifecycleOwner.lifecycleCoordinator(
     factory: () -> C
 ): Lazy<C> where C : LifecycleCoordinator<*, *> {
-    return lazy { factory().also { lifecycle.addObserver(it) } }
+    return lazy { factory().also(lifecycle::addObserver) }
 }
