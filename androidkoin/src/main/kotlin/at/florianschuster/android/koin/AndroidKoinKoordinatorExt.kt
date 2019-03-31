@@ -29,7 +29,7 @@ inline fun <reified C> Module.coordinator(
  */
 inline fun <L, reified C> L.coordinator(
     qualifier: Qualifier? = null,
-    scope: Scope = Scope.GLOBAL,
+    scope: Scope? = null,
     noinline parameters: ParametersDefinition? = null
 ): Lazy<C> where L : LifecycleOwner, C : LifecycleCoordinator<*, *> = lazy {
     getKoin().get<C>(qualifier, scope, parameters).also(lifecycle::addObserver)
@@ -40,7 +40,7 @@ inline fun <L, reified C> L.coordinator(
  */
 inline fun <L, reified C> L.getCoordinator(
     qualifier: Qualifier? = null,
-    scope: Scope = Scope.GLOBAL,
+    scope: Scope? = null,
     noinline parameters: ParametersDefinition? = null
 ): C where L : LifecycleOwner, C : LifecycleCoordinator<*, *> =
     getKoin().get<C>(qualifier, scope, parameters).also(lifecycle::addObserver)

@@ -18,7 +18,5 @@ object Router {
     /**
      * Use this to follow a specific [CoordinatorRoute].
      */
-    infix fun follow(route: CoordinatorRoute) {
-        routeSubject.onNext(route)
-    }
+    infix fun follow(route: CoordinatorRoute) = routeSubject.onNext(route)
 }
