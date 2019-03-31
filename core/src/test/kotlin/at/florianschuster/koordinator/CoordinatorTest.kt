@@ -53,7 +53,6 @@ class CoordinatorTest {
             )
         )
     }
-
 }
 
 private enum class TestCoordinatorRoute : Route {

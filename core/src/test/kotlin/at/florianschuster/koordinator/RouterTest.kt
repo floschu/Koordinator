@@ -17,7 +17,6 @@ class RouterTest {
             assert(results == listOf(RouterTestRoute.FIRST, RouterTestRoute.THIRD, RouterTestRoute.SECOND))
         }
     }
-
 }
 
 private enum class RouterTestRoute : Route {

@@ -3,7 +3,6 @@ package at.florianschuster.koordinator
 import android.app.Activity
 import android.view.ViewGroup
 import androidx.annotation.CallSuper
-import io.reactivex.Maybe
 import io.reactivex.disposables.CompositeDisposable
 import java.lang.ClassCastException
 
@@ -28,8 +27,8 @@ abstract class Coordinator<CoordinatorRoute, NavigationHandler> where Coordinato
                     try {
                         navigate(coordinatorRoute, navHandler)
                     } catch (cce: ClassCastException) {
-                        //todo can this be done differently?
-                        //route is not of type CoordinatorRoute --> don't navigate
+                        // todo can this be done differently?
+                        // route is not of type CoordinatorRoute --> don't navigate
                     }
                 }
             }
