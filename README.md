@@ -109,13 +109,26 @@ Make sure to call `fun onCleared()` of **Coordinator** after you are done with i
 
 ### Koordinator-Android
 
-Use the `LifecycleOwner.lifecycleCoordinator(...)` extension function to bind a `LifecycleCoordinator` to a `lifecycle` of a `LifecycleOwner`. This then automatically clears the `CompositeDispoable` in `Coordinator`.
+A **LifecycleCoordinator** is a **Coordinator** that implements `LifecycleObserver` and calls its `fun onCleared()` when the observed `Lifecycle` calls `Lifecycle.Event.ON_DESTROY`.
+
+Use the `LifecycleOwner.lifecycleCoordinator(...)` extension function to bind a **LifecycleCoordinator** to a `lifecycle` of a `LifecycleOwner`.
+
+``` kotlin
+class LifecycleMoviesFragment: Fragment() {
+    val coordinator by lifecycleCoordinator { MoviesCoordinator() }
+    
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        coordinator.provideNavigationHandler(this.findNavController())
+    }
+}
+```
 
 ### Koordinator-Android-Koin
 
 [Koin](https://github.com/InsertKoinIO/koin) is a lightweight dependency injection framework for Kotlin.
 
-The `androidkoin` module contains simple extension functions to inject a `LifecycleCoordinator`. They are just renamed Koin extension functions that can be used for more clarity when developing with the framework.
+The `androidkoin` module contains simple extension functions to inject a **LifecycleCoordinator**. They are just renamed Koin extension functions that can be used for more clarity when developing with the framework.
 
 ### Examples
 
