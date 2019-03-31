@@ -10,7 +10,7 @@ import java.lang.ClassCastException
  * A [Coordinator] handles navigation or view flow for one or more view controllers (e.g. [Fragment],
  * [Activity], [ViewGroup], [View]). Its purpose is to isolate navigation logic.
  *
- * The [Route] defines the routes that the coordinator can navigate to with the help of a
+ * The [CoordinatorRoute] defines the routes that the coordinator can navigate to with the help of a
  * [NavigationHandler].
  */
 abstract class Coordinator<CoordinatorRoute, NavigationHandler> where CoordinatorRoute : Route, NavigationHandler : Any {
@@ -43,7 +43,7 @@ abstract class Coordinator<CoordinatorRoute, NavigationHandler> where Coordinato
     }
 
     /**
-     * Method that handles the navigation that is defined through a [Route].
+     * Method that handles the navigation that is defined through a [CoordinatorRoute].
      */
     abstract fun navigate(route: CoordinatorRoute, handler: NavigationHandler)
 
