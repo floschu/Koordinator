@@ -49,9 +49,7 @@ sealed class MoviesRoute : KoordinatorRoute {
 }
 
 // per view controller
-class MoviesCoordinator(
-    router: Router
-) : Coordinator<MoviesRoute, NavController>(router) {
+class MoviesCoordinator : Coordinator<MoviesRoute, NavController>() {
     override fun navigate(route: MoviesRoute, handler: NavController) {
         when (route) {
             is MoviesRoute.OnMovieSelected -> Directions.actionOverviewToDetail(route.id)
@@ -60,16 +58,12 @@ class MoviesCoordinator(
     }
 }
 
-// singleton
-val router = Router()
-
 // in view controller (e.g. Fragment)
-val coordinator = MoviesCoordinator(router)
+val coordinator = MoviesCoordinator()
 coordinator.provideNavigationHandler(findNavController())
 
 // in view model
-router follow MoviesRoute.OnMovieSelected(420)
-
+Router follow MoviesRoute.OnMovieSelected(420)
 ```
 
 ### Koordinator-Android
