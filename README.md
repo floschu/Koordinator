@@ -37,18 +37,42 @@ dependencies {
 
 ### General
 
-*TODO*
+#### Route
+A **Route** expresses a way that a **Coordinator** can follow for navigation.
 
-Make sure to call `fun onCleared()` of `Coordinator` after you are done with it. This clears the internal `CompositeDisposable`.
+It is not up to the **Route** to decide where or how to navigate. Do not couple view flows to a **Route**, rather try to define a coordinated action as **Route**.
+
+For example use
 
 ``` kotlin
-// per view controller
-sealed class MoviesRoute : KoordinatorRoute {
-    data class OnMovieSelected(val id: Int) : MoviesRoute()
-    object SearchIsRequired : MoviesRoute()
+sealed class MoviesRoute : Route {
+    data class OnMovieSelected(val movieId: Long) : MoviesRoute() // do
 }
+```
 
-// per view controller
+ instead of
+ 
+ ``` kotlin
+ sealed class MoviesRoute : Route {
+    data class OpenMovieDetailFragment(val movieId: Long) : MoviesRoute() // don't
+}
+```
+
+Each screen should have an object that implements **Route** to define the directions of its navigation. This could be an enum or a sealed class.
+
+#### Router
+
+The **Router** can be used in a view independent class to follow a specific [Route]. A flow specific [Coordinator] then uses the [Router] to determine where to navigate.
+
+``` kotlin
+Router follow MoviesRoute.OnMovieSelected(420)
+```
+
+#### Coordinator
+
+A **Coordinator** handles navigation or view flow for one or more view controllers (e.g. `Fragment`, `Activity`, `ViewGroup`, `View`). Its purpose is to isolate navigation logic.
+
+``` kotlin
 class MoviesCoordinator : Coordinator<MoviesRoute, NavController>() {
     override fun navigate(route: MoviesRoute, handler: NavController) {
         when (route) {
@@ -57,14 +81,28 @@ class MoviesCoordinator : Coordinator<MoviesRoute, NavController>() {
         }.also(handler::navigate)
     }
 }
-
-// in view controller (e.g. Fragment)
-val coordinator = MoviesCoordinator()
-coordinator.provideNavigationHandler(findNavController())
-
-// in view model
-Router follow MoviesRoute.OnMovieSelected(420)
 ```
+
+A **Coordinator** needs a specific implementation of **Route** that it should handle and a **NavigationHandler** that then actually navigates. The **NavigationHandler** is provides by the view and could for example be a `FragmentManager`, a `NavigationController` or a `Context`.
+
+``` kotlin
+class MoviesFragment: Fragment() {
+    val coordinator = MoviesCoordinator()
+    
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        coordinator.provideNavigationHandler(this.findNavController())
+    }
+    
+    override fun onDestroyView() {
+        super.onDestroyView()
+        coordinator.onCleared()
+    }
+}
+```
+
+Make sure to call `fun onCleared()` of **Coordinator** after you are done with it. This clears the internal `CompositeDisposable` and the reference to the **NavigationHandler**.
+
 
 ### Koordinator-Android
 
