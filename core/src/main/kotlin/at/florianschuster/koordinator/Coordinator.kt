@@ -21,7 +21,6 @@ abstract class Coordinator<CoordinatorRoute, NavigationHandler> where Coordinato
     init {
         Router.routes
             .subscribe { route ->
-                //todo can this be done differently?
                 @Suppress("UNCHECKED_CAST")
                 val coordinatorRoute: CoordinatorRoute = route as CoordinatorRoute
 
@@ -29,6 +28,7 @@ abstract class Coordinator<CoordinatorRoute, NavigationHandler> where Coordinato
                     try {
                         navigate(coordinatorRoute, navHandler)
                     } catch (cce: ClassCastException) {
+                        //todo can this be done differently?
                         //route is not of type CoordinatorRoute --> don't navigate
                     }
                 }

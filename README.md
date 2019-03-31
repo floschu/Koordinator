@@ -1,5 +1,5 @@
 # Koordinator
-![Koordinator Version](https://img.shields.io/badge/Koordinator-0.0.6-orange.svg) ![minSdk](https://img.shields.io/badge/minSdk-14-green.svg)
+![Koordinator Version](https://img.shields.io/badge/Koordinator-0.0.7-orange.svg) ![minSdk](https://img.shields.io/badge/minSdk-14-green.svg)
 
 Koordinator is a simple pattern for Android applications to separate specific navigation implementation from view controllers.
 
@@ -13,17 +13,17 @@ allprojects {
 }
 
 dependencies {
-    implementation 'at.florianschuster.koordinator:core:0.0.6'
+    implementation 'at.florianschuster.koordinator:core:0.0.7'
     
     /**
      * Lifecycle Extensions for Koordinator. See: Koordinator-Android
      */
-    implementation 'at.florianschuster.koordinator:android:0.0.6'
+    implementation 'at.florianschuster.koordinator:android:0.0.7'
     
     /**
      * Lifecycle Extensions for Koordinator. See: Koordinator-Android-Koin
      */
-    implementation 'at.florianschuster.koordinator:androidkoin:0.0.6'
+    implementation 'at.florianschuster.koordinator:androidkoin:0.0.7'
 }
 ```
 
@@ -149,7 +149,7 @@ Visit my [Website](https://florianschuster.at/).
     <string name="library_koordinator_libraryName">Koordinator</string>
     <string name="library_koordinator_libraryDescription">Koordinator is a simple pattern to separate specific navigation implementation from view controllers.</string>
     <string name="library_koordinator_libraryWebsite">https://github.com/floschu/Koordinator</string>
-    <string name="library_koordinator_libraryVersion">0.0.6</string>
+    <string name="library_koordinator_libraryVersion">0.0.7</string>
     <string name="library_koordinator_isOpenSource">true</string>
     <string name="library_koordinator_repositoryLink">https://github.com/floschu/Koordinator</string>
     <string name="library_koordinator_classPath">at.florianschuster.koordinator</string>
