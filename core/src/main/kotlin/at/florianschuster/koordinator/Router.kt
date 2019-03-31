@@ -1,23 +1,23 @@
 package at.florianschuster.koordinator
 
-import io.reactivex.BackpressureStrategy
-import io.reactivex.Flowable
+import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 
 /**
- * A [Router] can be injected into a View independent class and used to follow a specific [CoordinatorRoute].
- * A flow specific [Coordinator] then uses the router to determine where to navigate.
- *
- * An application should only have one [Router].
+ * The [Router] can be used in a view independent class to follow a specific [CoordinatorRoute].
+ * A flow specific [Coordinator] then uses the [Router] to determine where to navigate.
  */
-class Router {
+object Router {
     private val routeSubject: PublishSubject<CoordinatorRoute> = PublishSubject.create<CoordinatorRoute>()
 
     /**
-     * Use this to observe which [CoordinatorRoute] to handle.
+     * This is used to observe which [CoordinatorRoute] to handle in a [Coordinator].
      */
-    val routes: Flowable<CoordinatorRoute> = routeSubject.toFlowable(BackpressureStrategy.LATEST)
+    val routes: Observable<CoordinatorRoute> = routeSubject.hide()
 
+    /**
+     * Use this to follow a specific [CoordinatorRoute].
+     */
     infix fun follow(route: CoordinatorRoute) {
         routeSubject.onNext(route)
     }

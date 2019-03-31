@@ -1,9 +1,9 @@
 package at.florianschuster.koordinator
 
 /**
- * An object defining the routes that are possible results within or through a Coordinator.
+ * A [CoordinatorRoute] expresses a way that a Coordinator can follow for navigation.
  *
- * It is not up to the [CoordinatorRoute] to decide where or how to navigate! Do not couple view flows to a
+ * It is not up to the [CoordinatorRoute] to decide where or how to navigate. Do not couple view flows to a
  * route, rather try to define a coordinated action as route.
  * e.g. "ShowIsPicked(show: Show)" instead of "OpenShowDetailViewWith(show: Show)"
  *
