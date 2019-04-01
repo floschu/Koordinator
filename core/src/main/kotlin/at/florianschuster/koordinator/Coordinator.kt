@@ -20,14 +20,13 @@ abstract class Coordinator<CoordinatorRoute, NavigationHandler> where Coordinato
     init {
         Router.routes
             .subscribe { route ->
-                @Suppress("UNCHECKED_CAST")
-                val coordinatorRoute: CoordinatorRoute = route as CoordinatorRoute
-
                 handler?.let { navHandler ->
                     try {
+                        @Suppress("UNCHECKED_CAST")
+                        val coordinatorRoute: CoordinatorRoute = route as CoordinatorRoute
+
                         navigate(coordinatorRoute, navHandler)
                     } catch (cce: ClassCastException) {
-                        // todo can this be done differently?
                         // route is not of type CoordinatorRoute --> don't navigate
                     }
                 }
