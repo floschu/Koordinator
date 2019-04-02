@@ -19,6 +19,6 @@ class RouterTest {
     }
 }
 
-private enum class RouterTestRoute : Route {
+private enum class RouterTestRoute : CoordinatorRoute {
     FIRST, SECOND, THIRD
 }

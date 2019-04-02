@@ -1,5 +1,5 @@
 # Koordinator
-![Koordinator Version](https://img.shields.io/badge/Koordinator-0.0.8-orange.svg) ![minSdk](https://img.shields.io/badge/minSdk-14-green.svg)
+![Koordinator Version](https://img.shields.io/badge/Koordinator-0.0.9-orange.svg) ![minSdk](https://img.shields.io/badge/minSdk-14-green.svg)
 
 Koordinator is a simple pattern for Android applications to separate specific navigation implementation from view controllers.
 
@@ -13,17 +13,17 @@ allprojects {
 }
 
 dependencies {
-    implementation 'at.florianschuster.koordinator:koordinator-core:0.0.8'
+    implementation 'at.florianschuster.koordinator:koordinator-core:0.0.9'
     
     /**
      * Lifecycle Extensions for Koordinator. See: Koordinator-Android
      */
-    implementation 'at.florianschuster.koordinator:koordinator-android:0.0.8'
+    implementation 'at.florianschuster.koordinator:koordinator-android:0.0.9'
     
     /**
      * Lifecycle Extensions for Koordinator. See: Koordinator-Android-Koin
      */
-    implementation 'at.florianschuster.koordinator:koordinator-android-koin:0.0.8'
+    implementation 'at.florianschuster.koordinator:koordinator-android-koin:0.0.9'
 }
 ```
 
@@ -35,15 +35,15 @@ dependencies {
 
 ### General
 
-#### Route
-A **Route** expresses a way that a **Coordinator** can follow for navigation.
+#### CoordinatorRoute
+A **CoordinatorRoute** expresses a way that a **Coordinator** can follow for navigation.
 
-It is not up to the **Route** to decide where or how to navigate. Do not couple view flows to a **Route**, rather try to define a coordinated action as **Route**.
+It is not up to the **CoordinatorRoute** to decide where or how to navigate. Do not couple view flows to a **CoordinatorRoute**, rather try to define a coordinated action as **CoordinatorRoute**.
 
 For example use
 
 ``` kotlin
-sealed class MoviesRoute : Route {
+sealed class MoviesRoute : CoordinatorRoute {
     data class OnMovieSelected(val movieId: Long) : MoviesRoute() // do
 }
 ```
@@ -51,16 +51,16 @@ sealed class MoviesRoute : Route {
  instead of
  
  ``` kotlin
- sealed class MoviesRoute : Route {
+ sealed class MoviesRoute : CoordinatorRoute {
     data class OpenMovieDetailFragment(val movieId: Long) : MoviesRoute() // don't
 }
 ```
 
-Each screen should have an object that implements **Route** to define the directions of its navigation. This could be an enum or a sealed class.
+Each screen should have an object that implements **CoordinatorRoute** to define the directions of its navigation. This could be an enum or a sealed class.
 
 #### Router
 
-The **Router** can be used in a view independent class to follow a specific **Route**. A flow specific **Coordinator** then uses the **Router** to determine where to navigate.
+The **Router** can be used in a view independent class to follow a specific **CoordinatorRoute**. A flow specific **Coordinator** then uses the **Router** to determine where to navigate.
 
 ``` kotlin
 class MoviesViewModel: ViewModel() {
@@ -85,7 +85,7 @@ class MoviesCoordinator : Coordinator<MoviesRoute, NavController>() {
 }
 ```
 
-A **Coordinator** needs a specific implementation of **Route** that it should handle and a **NavigationHandler** that then actually navigates. The **NavigationHandler** is provides by the view and could for example be a `FragmentManager`, a `NavigationController` or a `Context`.
+A **Coordinator** needs a specific implementation of **CoordinatorRoute** that it should handle and a **NavigationHandler** that then actually navigates. The **NavigationHandler** is provides by the view and could for example be a `FragmentManager`, a `NavigationController` or a `Context`.
 
 ``` kotlin
 class MoviesFragment: Fragment() {
@@ -148,7 +148,7 @@ Visit my [Website](https://florianschuster.at/).
     <string name="library_koordinator_libraryName">Koordinator</string>
     <string name="library_koordinator_libraryDescription">Koordinator is a simple pattern to separate specific navigation implementation from view controllers.</string>
     <string name="library_koordinator_libraryWebsite">https://github.com/floschu/Koordinator</string>
-    <string name="library_koordinator_libraryVersion">0.0.8</string>
+    <string name="library_koordinator_libraryVersion">0.0.9</string>
     <string name="library_koordinator_isOpenSource">true</string>
     <string name="library_koordinator_repositoryLink">https://github.com/floschu/Koordinator</string>
     <string name="library_koordinator_classPath">at.florianschuster.koordinator</string>

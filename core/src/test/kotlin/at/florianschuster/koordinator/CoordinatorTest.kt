@@ -6,7 +6,7 @@ class CoordinatorTest {
 
     @Test
     fun testCoordinatorOnlyNavigatesWhenHandlerAttached() {
-        val followedRoutes: ArrayList<Route> = arrayListOf()
+        val followedRoutes: ArrayList<CoordinatorRoute> = arrayListOf()
         val coordinator = object : Coordinator<TestCoordinatorRoute, Any>() {
             override fun navigate(route: TestCoordinatorRoute, handler: Any) {
                 followedRoutes.add(route)
@@ -31,7 +31,7 @@ class CoordinatorTest {
 
     @Test
     fun testCoordinatorOnlyNavigatesOnCorrectSubRoute() {
-        val followedRoutes: ArrayList<Route> = arrayListOf()
+        val followedRoutes: ArrayList<CoordinatorRoute> = arrayListOf()
         val coordinator = object : Coordinator<TestCoordinatorRoute, Any>() {
             override fun navigate(route: TestCoordinatorRoute, handler: Any) {
                 followedRoutes.add(route)
@@ -55,8 +55,8 @@ class CoordinatorTest {
     }
 }
 
-private enum class TestCoordinatorRoute : Route {
+private enum class TestCoordinatorRoute : CoordinatorRoute {
     FIRST, SECOND, THIRD
 }
 
-private object NonTestCoordinatorRoute : Route
+private object NonTestCoordinatorRoute : CoordinatorRoute

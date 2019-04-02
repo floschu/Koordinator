@@ -10,10 +10,10 @@ import java.lang.ClassCastException
  * A [Coordinator] handles navigation or view flow for one or more view controllers (e.g. [Fragment],
  * [Activity], [ViewGroup], [View]). Its purpose is to isolate navigation logic.
  *
- * The [CoordinatorRoute] defines the routes that the coordinator can navigate to with the help of a
- * [NavigationHandler].
+ * The [Route] must implement [CoordinatorRoute] and defines the routes that the coordinator can navigate to
+ * with the help of a [NavigationHandler].
  */
-abstract class Coordinator<CoordinatorRoute, NavigationHandler> where CoordinatorRoute : Route, NavigationHandler : Any {
+abstract class Coordinator<Route, NavigationHandler> where Route : CoordinatorRoute, NavigationHandler : Any {
     private val disposables = CompositeDisposable()
     private var handler: NavigationHandler? = null
 
@@ -23,7 +23,7 @@ abstract class Coordinator<CoordinatorRoute, NavigationHandler> where Coordinato
                 handler?.let { navHandler ->
                     try {
                         @Suppress("UNCHECKED_CAST")
-                        val coordinatorRoute: CoordinatorRoute = route as CoordinatorRoute
+                        val coordinatorRoute: Route = route as Route
 
                         navigate(coordinatorRoute, navHandler)
                     } catch (cce: ClassCastException) {
@@ -42,9 +42,9 @@ abstract class Coordinator<CoordinatorRoute, NavigationHandler> where Coordinato
     }
 
     /**
-     * Method that handles the navigation that is defined through a [CoordinatorRoute].
+     * Method that handles the navigation that is defined through a [Route].
      */
-    abstract fun navigate(route: CoordinatorRoute, handler: NavigationHandler)
+    abstract fun navigate(route: Route, handler: NavigationHandler)
 
     @CallSuper
     open fun onCleared() {
