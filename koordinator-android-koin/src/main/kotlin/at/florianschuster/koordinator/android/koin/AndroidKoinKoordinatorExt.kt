@@ -1,4 +1,4 @@
-package at.florianschuster.android.koin
+package at.florianschuster.koordinator.android.koin
 
 import android.content.ComponentCallbacks
 import androidx.annotation.RestrictTo
