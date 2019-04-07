@@ -1,5 +1,5 @@
 # Koordinator
-![Koordinator Version](https://img.shields.io/badge/Koordinator-0.0.10-orange.svg) ![minSdk](https://img.shields.io/badge/minSdk-14-green.svg)
+![Koordinator Version](https://img.shields.io/badge/Koordinator-0.0.11-orange.svg) ![minSdk](https://img.shields.io/badge/minSdk-14-green.svg)
 
 Koordinator is a simple pattern for Android applications to separate specific navigation implementation from view controllers.
 
@@ -13,19 +13,17 @@ allprojects {
 }
 
 dependencies {
-    def koordinatorVersion = '0.0.10'
-    
-    implementation "at.florianschuster.koordinator:koordinator-core:$koordinatorVersion"
+    implementation "at.florianschuster.koordinator:koordinator-core:$version"
     
     /**
      * Lifecycle Extensions for Koordinator. See: Koordinator-Android
      */
-    implementation "at.florianschuster.koordinator:koordinator-android:$koordinatorVersion"
+    implementation "at.florianschuster.koordinator:koordinator-android:$version"
     
     /**
      * Lifecycle Extensions for Koordinator. See: Koordinator-Android-Koin
      */
-    implementation "at.florianschuster.koordinator:koordinator-android-koin:$koordinatorVersion"
+    implementation "at.florianschuster.koordinator:koordinator-android-koin:$version"
 }
 ```
 
@@ -138,25 +136,6 @@ The `androidkoin` module contains simple extension functions to inject a **Lifec
 ## Author
 
 Visit my [Website](https://florianschuster.at/).
-
-## AboutLibraries
-
-``` xml
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="define_koordinator" />
-    <string name="library_koordinator_author">Florian Schuster</string>
-    <string name="library_koordinator_authorWebsite">https://florianschuster.at</string>
-    <string name="library_koordinator_libraryName">Koordinator</string>
-    <string name="library_koordinator_libraryDescription">Koordinator is a simple pattern to separate specific navigation implementation from view controllers.</string>
-    <string name="library_koordinator_libraryWebsite">https://github.com/floschu/Koordinator</string>
-    <string name="library_koordinator_libraryVersion">0.0.10</string>
-    <string name="library_koordinator_isOpenSource">true</string>
-    <string name="library_koordinator_repositoryLink">https://github.com/floschu/Koordinator.git</string>
-    <string name="library_koordinator_classPath">at.florianschuster.koordinator</string>
-    <string name="library_koordinator_licenseId">apache_2_0</string>
-</resources>
-```
 
 ## License
 
