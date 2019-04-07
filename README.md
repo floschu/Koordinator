@@ -152,7 +152,7 @@ Visit my [Website](https://florianschuster.at/).
     <string name="library_koordinator_libraryWebsite">https://github.com/floschu/Koordinator</string>
     <string name="library_koordinator_libraryVersion">0.0.10</string>
     <string name="library_koordinator_isOpenSource">true</string>
-    <string name="library_koordinator_repositoryLink">https://github.com/floschu/Koordinator</string>
+    <string name="library_koordinator_repositoryLink">https://github.com/floschu/Koordinator.git</string>
     <string name="library_koordinator_classPath">at.florianschuster.koordinator</string>
     <string name="library_koordinator_licenseId">apache_2_0</string>
 </resources>
