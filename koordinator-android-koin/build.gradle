@@ -1,8 +1,7 @@
 apply from: "$rootDir/library-module.gradle"
 
 dependencies {
-    implementation project(':koordinator')
-    implementation project(':koordinator-android')
+    api project(':koordinator-android')
     implementation deps.lifecycle
     implementation deps.koin.values()
 }

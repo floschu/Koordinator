@@ -1,5 +1,7 @@
 # Koordinator
-![Koordinator Version](https://img.shields.io/badge/Koordinator-0.0.11-orange.svg) ![minSdk](https://img.shields.io/badge/minSdk-14-green.svg)
+
+![Koordinator](https://img.shields.io/badge/Koordinator-0.0.12-blue.svg)
+ ![Kotlin](https://img.shields.io/badge/Language-Kotlin-orange.svg)![minSdk](https://img.shields.io/badge/Android-minSdk%2014-green.svg)
 
 Koordinator is a simple pattern for Android applications to separate specific navigation implementation from view controllers.
 
