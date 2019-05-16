@@ -6,7 +6,7 @@
     <string name="library_koordinator_libraryName">Koordinator</string>
     <string name="library_koordinator_libraryDescription">Koordinator is a simple pattern to separate specific navigation implementation from view controllers.</string>
     <string name="library_koordinator_libraryWebsite">https://github.com/floschu/Koordinator</string>
-    <string name="library_koordinator_libraryVersion">0.0.12</string>
+    <string name="library_koordinator_libraryVersion">0.0.13</string>
     <string name="library_koordinator_isOpenSource">true</string>
     <string name="library_koordinator_repositoryLink">https://github.com/floschu/Koordinator.git</string>
     <string name="library_koordinator_classPath">at.florianschuster.koordinator</string>

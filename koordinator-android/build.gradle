@@ -1,6 +1,6 @@
 apply from: "$rootDir/library-module.gradle"
 
 dependencies {
-    api project(':koordinator')
+    api project(':koordinator-core')
     implementation deps.lifecycle
 }
